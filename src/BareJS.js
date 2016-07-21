@@ -33,8 +33,8 @@ BareJS._isIterable = function (obj) {
 BareJS.shortcutEnabled = false;
 /**
  * Activates the $ shortcut
- * @param {boolean|undefined} force if set to true, overides the $ shortcut, even if it is already set (e.g. by another library like jQuery, etc...)
- * @return {boolean} returns true if the shortcut was activated
+ * @param {boolean|undefined} force if set to true, overrides the $ shortcut, even if it is already set (e.g. by another library like jQuery, etc...)
+ * @return {boolean} returns true if the shortcut is activated
  */
 BareJS.enableShortcut = function (force) {
     if (typeof $ == "undefined" || force) {
@@ -221,6 +221,7 @@ BareJS.hasClass = function (clazz, nodes) {
  *
  * @param options
  * @returns {Document}
+ * @todo finish
  */
 BareJS.request = function (options) {
     var xmlhttp;
@@ -236,5 +237,11 @@ BareJS.request = function (options) {
 
     return xmlhttp.responseXML;
 };
+
+
+// todo add event functions (addEvent, fireEvent, removeEvent) & maybe something like the mootools pseudoevents (:relay() would be nice)
+// todo add string formatting method
+// todo add DOM traversing methodes (like getParent([selector]) etc...)
+
 
 window.BareJS = BareJS;
