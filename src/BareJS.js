@@ -20,6 +20,8 @@ var BareJS = function (selector, context) {
 
 
 BareJS._isIterable = function (obj) {
+    "use strict";
+
     // checks for null and undefined
     if (obj == null) {
         return false;
@@ -30,13 +32,15 @@ BareJS._isIterable = function (obj) {
 
 // setup methods
 
-BareJS.shortcutEnabled = false;
+BareJS.shortcutEnabled = false; // todo make general values object of BareJS
 /**
  * Activates the $ shortcut
  * @param {boolean|undefined} force if set to true, overrides the $ shortcut, even if it is already set (e.g. by another library like jQuery, etc...)
  * @return {boolean} returns true if the shortcut is activated
  */
 BareJS.enableShortcut = function (force) {
+    "use strict";
+
     if (typeof $ == "undefined" || force) {
         window.$ = window.BareJS;
 
@@ -53,6 +57,8 @@ BareJS.prototypesEnabled = false;
  * Adds prototypes to some objects (e.g. addClass etc.. on Node)
  */
 BareJS.enablePrototypes = function () {
+    "use strict";
+
     /**
      * @see BareJS.addClass
      */
@@ -86,6 +92,8 @@ BareJS.enablePrototypes = function () {
  * @param {Node|null} context
  */
 BareJS.all = function (selector,context) {
+    "use strict";
+
     return (context || document).querySelectorAll(selector);
 };
 
@@ -95,6 +103,8 @@ BareJS.all = function (selector,context) {
  * @param {Node|null} context
  */
 BareJS.one = function (selector,context) {
+    "use strict";
+
     return (context || document).querySelector(selector);
 };
 
@@ -104,6 +114,8 @@ BareJS.one = function (selector,context) {
  * @param {function} cb
  */
 BareJS.each = function (iterable, cb) {
+    "use strict";
+
     if (!BareJS._isIterable(iterable)) {
         iterable = [iterable];
     }
@@ -124,6 +136,8 @@ BareJS.each = function (iterable, cb) {
  * @return {boolean}
  */
 BareJS.some = function (iterable, cb) {
+    "use strict";
+
     if (!BareJS._isIterable(iterable)) {
         iterable = [iterable];
     }
@@ -146,6 +160,8 @@ BareJS.some = function (iterable, cb) {
  * @param {NodeList|Array|Node} nodes
  */
 BareJS.addClass = function (clazz, nodes) {
+    "use strict";
+
     if (!BareJS._isIterable(nodes)) {
         nodes = [nodes];
     }
@@ -161,6 +177,8 @@ BareJS.addClass = function (clazz, nodes) {
  * @param {NodeList|Array|Node} nodes
  */
 BareJS.removeClass = function (clazz, nodes) {
+    "use strict";
+
     if (!BareJS._isIterable(nodes)) {
         nodes = [nodes];
     }
@@ -177,6 +195,8 @@ BareJS.removeClass = function (clazz, nodes) {
  * @param {boolean|undefined} force if set to true, the class will be added to the element, regardless if it is already present
  */
 BareJS.toggleClass = function (clazz, nodes, force) {
+    "use strict";
+
     if (typeof force == "undefined") {
         force = false;
     }
@@ -201,6 +221,8 @@ BareJS.toggleClass = function (clazz, nodes, force) {
  * @return {boolean|boolean[]|undefined}
  */
 BareJS.hasClass = function (clazz, nodes) {
+    "use strict";
+
     if (!BareJS._isIterable(nodes)) {
         nodes = [nodes];
     }
@@ -224,6 +246,8 @@ BareJS.hasClass = function (clazz, nodes) {
  * @todo finish
  */
 BareJS.request = function (options) {
+    "use strict";
+    
     var xmlhttp;
 
     if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
