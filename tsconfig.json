@@ -1,0 +1,17 @@
+{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es3",
+    "noImplicitAny": true,
+    "sourceMap": true,
+    "pretty": true,
+    "newLine": "lf"
+  },
+  "exclude": [
+    "node_modules"
+  ],
+  "files": [
+    "js/BareJS.ts"
+  ]
+}
