@@ -13,7 +13,7 @@
 var BareJS = (function () {
     function BareJS() {
         "use strict";
-        throw new Error('BareJS cann not be instantiated!');
+        throw new Error('BareJS can\'t not be instantiated!');
     }
     /**
      * Get the Javascript version number
@@ -46,8 +46,9 @@ var BareJS = (function () {
         "use strict";
         if (force === void 0) { force = false; }
         if (typeof window.$ == "undefined" || force) {
-            window.$ = BareJS;
-            BareJS.info.shortcutEnabled = (window.$ == BareJS);
+            window.$ = BareJS.one;
+            window.$$ = BareJS.all;
+            BareJS.info.shortcutEnabled = (window.$ == BareJS.one) && (window.$$ == BareJS.all);
         }
         return BareJS.info.shortcutEnabled;
     };

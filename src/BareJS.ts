@@ -15,7 +15,8 @@
 
 
 interface Window {
-    $: any|BareJS;
+    $: any;
+    $$: any;
     javascriptVersion: number;
 }
 
@@ -73,7 +74,7 @@ class BareJS {
     constructor() {
         "use strict";
 
-        throw new Error('BareJS cann not be instantiated!');
+        throw new Error('BareJS can\'t not be instantiated!');
     }
 
 
@@ -115,9 +116,10 @@ class BareJS {
         "use strict";
 
         if (typeof window.$ == "undefined" || force) {
-            window.$ = BareJS;
+            window.$ = BareJS.one;
+            window.$$ = BareJS.all;
 
-            BareJS.info.shortcutEnabled = (window.$ == BareJS);
+            BareJS.info.shortcutEnabled = (window.$ == BareJS.one) && (window.$$ == BareJS.all);
         }
 
         return BareJS.info.shortcutEnabled;
