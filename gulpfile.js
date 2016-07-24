@@ -9,6 +9,7 @@ var zip = require('gulp-zip');
 var del = require('del');
 var gulpCopy = require('gulp-copy');
 var gulpsync = require('gulp-sync')(gulp);
+var cover = require('gulp-coverage');
 
 var packageJSON = require('./package.json');
 
@@ -16,12 +17,27 @@ var packageJSON = require('./package.json');
 var tsProject = ts.createProject('tsconfig.json', { sortOutput: true });
 
 gulp.task('test', function () {
-    return gulp.src('test/*.js')
+    return gulp.src('test/*.js', {read:false})
         .pipe(mocha())
         .on('error', util.log)
         .once('error', function () {
             process.exit(1);
         });
+});
+
+gulp.task('test-with-coverage', function () {
+    return gulp.src('test/*.js', {read:false})
+        .pipe(cover.instrument({
+            pattern: ['src/*.js*']
+        }))
+        .pipe(mocha())
+        .on('error', util.log)
+        .once('error', function () {
+            process.exit(1);
+        })
+        .pipe(cover.gather())
+        .pipe(cover.format())
+        .pipe(gulp.dest('reports'));
 });
 
 
