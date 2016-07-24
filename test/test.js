@@ -49,6 +49,13 @@ describe('BareJS', function() {
             expect(div.tagName.toLowerCase()).to.equal('div');
         });
 
+        it('should find one element by class', function() {
+            var div = BareJS.one('.div');
+            expect(div).to.exist;
+            //todo check if type HTMLElement and not NodeList
+            expect(div.tagName.toLowerCase()).to.equal('div');
+        });
+
         it('shouldn\'t find a element that doesn\'t exist in the dom', function() {
             var a = BareJS.one('a');
             expect(a).to.not.exist;
