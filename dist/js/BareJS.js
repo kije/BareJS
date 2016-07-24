@@ -87,6 +87,11 @@ var BareJS = (function () {
         if (context === void 0) { context = document; }
         return context.querySelectorAll(selector);
     };
+    /**
+     *
+     * @param {string} selector
+     * @returns {boolean}
+     */
     BareJS.isSimpleSelector = function (selector) {
         "use strict";
         // check, if selector is simple (e.g. only contains an id or a tag name)

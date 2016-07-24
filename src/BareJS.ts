@@ -166,6 +166,11 @@ class BareJS {
         return context.querySelectorAll(selector);
     }
 
+    /**
+     *
+     * @param {string} selector
+     * @returns {boolean}
+     */
     private static isSimpleSelector(selector:string):boolean {
         "use strict";
 
