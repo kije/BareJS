@@ -1,16 +1,23 @@
 var chai = require('chai');
-var util = require('gulp-util');
 var assert = chai.assert;
 var expect = chai.expect;
 var should = chai.should();
-var jsdom = require('mocha-jsdom');
 var BareJS = require('../src/BareJS.js');
 
 describe('BareJS', function() {
     this.timeout(10000); // timeout needs to be high because of jsdom :/
-    jsdom();
+    if (typeof document == "undefined") {
+        // assume we are on node js and need to init jsdom
+        var jsdom = require('mocha-jsdom');
+        jsdom();
+    }
+
 
     before(function() {
+        var container = document.createElement('div');
+        container.id = 'test-container';
+        document.body.appendChild(container);
+
         var names = ['first', 'second', 'third'];
         for (var i in names) {
             var div = document.createElement('div');
@@ -37,7 +44,7 @@ describe('BareJS', function() {
             specialChild.classList.add("parent-"+i);
             div.appendChild(specialChild);
 
-            document.body.appendChild(div);
+            container.appendChild(div);
         }
     });
 
@@ -76,7 +83,7 @@ describe('BareJS', function() {
         });
 
         it('should find child element', function() {
-            var parent = BareJS.one('div');
+            var parent = BareJS.one('#first-div');
             expect(parent).to.exist;
             var span = BareJS.one('span', parent);
             expect(span).to.exist;
