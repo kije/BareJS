@@ -8,4 +8,4 @@ node_js:
 install:
   - npm install -g gulp
   - npm install
-script: gulp test
+script: gulp compile && gulp test
