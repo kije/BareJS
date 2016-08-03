@@ -105,3 +105,4 @@ gulp.task('zip', function () {
 gulp.task('release', function () {
     return gulp.start.apply(gulp, gulpsync.sync(['compile', 'test', 'clean', 'copy', 'minify', 'zip']));
 });
+

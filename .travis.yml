@@ -3,10 +3,9 @@ node_js:
   - "6"
   - "6.1"
   - "5.11"
-  - "0.6"
   - "iojs"
   - "node"
 install:
   - npm install -g gulp
   - npm install
-script: gulp
+script: gulp test
