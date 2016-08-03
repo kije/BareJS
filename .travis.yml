@@ -6,7 +6,7 @@ node_js:
   - "0.6"
   - "iojs"
   - "node"
-before_script:
+install:
   - npm install -g gulp
   - npm install
 script: gulp
