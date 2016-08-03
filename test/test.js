@@ -231,22 +231,17 @@ describe('BareJS', function() {
         it('sould return false and iterate through all entries if cb returns always false', function () {
             var num_entries = 0;
             var sum = 0;
-            var limit = entries.length + 100;
 
             var found = BareJS.some(entries, function (entry) {
                 num_entries++;
                 sum += entry;
 
-                return entry == limit;
+                return false;
             });
 
             expect(num_entries).to.equal(entries.length);
             expect(sum).to.equal(entries.reduce(function(previousValue, currentValue){
-                if (currentValue <= limit) {
-                    return currentValue + previousValue;
-                }
-
-                return previousValue;
+                return currentValue + previousValue;
             }));
             expect(found).to.be.false;
         });
