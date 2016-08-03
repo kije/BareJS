@@ -171,10 +171,11 @@ var BareJS = (function () {
      */
     BareJS.addClass = function (clazz, elements) {
         "use strict";
+        // todo fallback, if classList is not supported
+        // see http://stackoverflow.com/questions/7388626/how-do-i-add-a-class-to-the-html-element-without-jquery
         if ("length" in elements && typeof elements.length === "undefined") {
             elements = [elements];
         }
-        console.log(elements);
         BareJS.each(elements, function (el) {
             el.classList.add(clazz);
         });
@@ -186,6 +187,7 @@ var BareJS = (function () {
      */
     BareJS.removeClass = function (clazz, elements) {
         "use strict";
+        // todo fallback, if classList is not supported
         if ("length" in elements) {
             elements = [elements];
         }
@@ -202,6 +204,7 @@ var BareJS = (function () {
     BareJS.toggleClass = function (clazz, elements, force) {
         "use strict";
         if (force === void 0) { force = false; }
+        // todo fallback, if classList is not supported
         if ("length" in elements) {
             elements = [elements];
         }
@@ -222,6 +225,7 @@ var BareJS = (function () {
      */
     BareJS.hasClass = function (clazz, elements) {
         "use strict";
+        // todo fallback, if classList is not supported
         if ("length" in elements) {
             elements = [elements];
         }

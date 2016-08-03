@@ -263,10 +263,12 @@ class BareJS {
     public static addClass(clazz:string, elements:Element|NodeListOf<Element>|Element[]):void {
         "use strict";
 
+        // todo fallback, if classList is not supported
+        // see http://stackoverflow.com/questions/7388626/how-do-i-add-a-class-to-the-html-element-without-jquery
+
         if ("length" in elements && typeof (<Element[]>elements).length === "undefined") {
             elements = <Element[]>[elements];
         }
-        console.log(elements)
 
 
         BareJS.each(elements, function (el:Element) {
@@ -281,6 +283,8 @@ class BareJS {
      */
     public static removeClass(clazz:string, elements:Element|NodeListOf<Element>|Element[]):void {
         "use strict";
+
+        // todo fallback, if classList is not supported
 
         if ("length" in elements) {
             elements = <Element[]>[elements];
@@ -299,6 +303,8 @@ class BareJS {
      */
     public static toggleClass(clazz:string, elements:Element|NodeListOf<Element>|Element[], force:boolean = false):void {
         "use strict";
+
+        // todo fallback, if classList is not supported
 
         if ("length" in elements) {
             elements = <Element[]>[elements];
@@ -321,6 +327,8 @@ class BareJS {
      */
     public static hasClass(clazz:string, elements:Element|NodeListOf<Element>|Element[]):boolean|boolean[] {
         "use strict";
+
+        // todo fallback, if classList is not supported
 
         if ("length" in elements) {
             elements = <Element[]>[elements];
@@ -365,7 +373,7 @@ class BareJS {
 
     // todo add event functions (addEvent, fireEvent, removeEvent) & maybe something like the mootools pseudoevents (:relay() would be nice)
     // todo add string formatting method
-    // todo add DOM traversing methodes (like getParent([selector]) etc...)
+    // todo add DOM traversing methods (like getParent([selector]) etc...)
     // todo methods for creating events
 }
 
